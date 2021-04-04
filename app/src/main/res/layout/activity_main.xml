@@ -1,97 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@drawable/bg"
-    tools:context=".HomeActivity">
+    android:fillViewport="true">
 
-    <TextView
-        android:id="@+id/app_title_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/app_title"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Formula Renderer" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".HomeActivity">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/input_cardView"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="48dp"
-        app:cardCornerRadius="4dp"
-        app:cardElevation="10dp"
-        app:layout_constraintEnd_toStartOf="@+id/render_btn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/app_title_tv">
+        <TextView
+            android:id="@+id/app_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/app_title"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Formula Renderer" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/formula_input_et"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/input_cardView"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="48dp"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/render_btn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/app_title_tv">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/formula_input_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:background="@android:color/transparent"
+                android:hint="@string/formula_edit_text_hint"
+                android:lines="5"
+                android:maxLines="5"
+                android:text="@string/test_formula_string" />
+        </androidx.cardview.widget.CardView>
+
+        <ImageButton
+            android:id="@+id/render_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_marginEnd="20dp"
+            android:background="@color/primary"
+            android:contentDescription="@string/render_formula_button_content_description"
+            android:padding="16dp"
+            android:src="@drawable/ic_arrow_forward"
+            android:text="@string/render_btn_text"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/input_cardView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/input_cardView" />
+
+        <TextView
+            android:id="@+id/result_remark_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="8dp"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/input_cardView"
+            tools:text="result remark" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/result_card_view"
             android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="20dp"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/result_remark_tv">
+
+            <ImageView
+                android:id="@+id/result_image_iv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:contentDescription="@string/rendered_image_content_description"
+                android:scaleType="fitXY"
+                android:src="@drawable/math_default_image" />
+
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:contentDescription="@string/share_button_content_description"
+            android:focusable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/result_card_view"
+            app:srcCompat="@android:drawable/ic_menu_share" />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:hint="@string/formula_edit_text_hint"
-            android:maxLines="5"
-            android:text="@string/test_formula_string" />
-    </androidx.cardview.widget.CardView>
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/render_history_btn_content_description"
+            android:padding="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/app_title_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/app_title_tv"
+            app:layout_constraintTop_toTopOf="@+id/app_title_tv"
+            app:srcCompat="@drawable/ic_view_list" />
 
-    <ImageButton
-        android:id="@+id/render_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_marginEnd="20dp"
-        android:background="@color/primary"
-        android:contentDescription="@string/render_formula_button_content_description"
-        android:padding="16dp"
-        android:src="@drawable/ic_arrow_forward"
-        android:text="@string/render_btn_text"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/input_cardView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/input_cardView" />
-
-    <TextView
-        android:id="@+id/result_remark_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:padding="8dp"
-        android:textColor="@android:color/holo_red_dark"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_cardView"
-        tools:text="result remark" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/result_card_view"
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="20dp"
-        app:cardCornerRadius="4dp"
-        app:cardElevation="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/result_remark_tv">
-
-        <ImageView
-            android:id="@+id/result_image_iv"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="8dp"
-            android:contentDescription="@string/rendered_image_content_description" />
-
-    </androidx.cardview.widget.CardView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

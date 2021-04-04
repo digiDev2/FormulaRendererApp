@@ -3,7 +3,10 @@
     <string name="app_title">Formula Renderer</string>
     <string name="render_btn_text">Render</string>
     <string name="rendered_image_content_description">Shows rendered image of the formula</string>
-    <string name="test_formula_string">a^2 + b^2 = c^2</string>
+<!--    <string name="test_formula_string">a^2 + b^2 = c^2</string>-->
+    <string name="test_formula_string">\\lim_{h \\to 0} \\frac{f(a+h)-f(a)}{h}</string>
     <string name="formula_edit_text_hint">Write Your Formula Here</string>
     <string name="render_formula_button_content_description">Render Formula Button</string>
+    <string name="share_button_content_description">Share Button</string>
+    <string name="render_history_btn_content_description">Render History Button</string>
 </resources>
