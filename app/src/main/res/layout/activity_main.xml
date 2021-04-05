@@ -98,7 +98,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:contentDescription="@string/rendered_image_content_description"
-                android:scaleType="fitXY"
+                android:scaleType="fitCenter"
                 android:src="@drawable/math_default_image" />
 
         </androidx.cardview.widget.CardView>
